@@ -1,0 +1,296 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(5, 5, 5, 0.8);
+  z-index: 99999;
+}
+
+.modal {
+  width: 300px;
+  /* height: 558px; */
+  border-radius: 12px;
+  background-color: var(--primary-black-second-color);
+  padding: 40px 12px 20px;
+}
+.section {
+  position: relative;
+}
+
+section h2 {
+  font-size: 25px;
+}
+.diary_wrapper_title {
+  display: flex;
+  margin-top: 24px;
+  line-height: 30px;
+  margin-bottom: 16px;
+}
+
+.diary_title {
+  margin-left: 12px;
+}
+
+.formMeal {
+  width: 100%;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+  padding: 2px;
+}
+
+.diary_breakfast_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.diary_add_meal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  height: 36px;
+}
+
+.btnActive {
+  height: 36px;
+  width: 276px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: none;
+  margin-right: 16px;
+  margin-top: 40px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--primary-black-second-color);
+  background-color: var(--primary-green-lite-color);
+}
+
+.btn {
+  height: 36px;
+  width: 276px;
+  padding: 0;
+  border: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--primary-white-color);
+  background-color: transparent;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.closeBtn {
+  position: absolute;
+  top: -42px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+}
+
+.closeBtn:active {
+  background-color: #485136;
+}
+
+.add_meal_bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 36px;
+}
+
+.diary_breakfast_item {
+  width: 100%;
+  height: 36px;
+  color: var(--primary-white-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: var(--primary-black-second-color);
+  border-radius: 12px;
+  border: 1px solid var(--primary-green-lite-color);
+  padding: 8px 10px;
+}
+
+.diary_breakfast_item::placeholder {
+  color: var(--primary-grey-color);
+}
+
+.diary_breakfast_item:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.formDiv {
+  height: 288px;
+  white-space: nowrap;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.diary_add_meal_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 834px) {
+  .add_meal_bottom {
+    margin-right: 70px;
+  }
+
+  .closeBtn {
+    top: -15px;
+  }
+
+  .formDiv {
+    height: 180px;
+    margin-bottom: 20px;
+  }
+
+  .btnActive {
+    margin-top: 0px;
+    width: 212px;
+    margin-right: 0;
+  }
+
+  .btn {
+    margin-top: 13px;
+    width: 204px;
+  }
+
+  .modal {
+    width: 676px;
+    height: 408px;
+    padding: 24px;
+  }
+  .formMeal {
+    display: flex;
+    flex-direction: column;
+    width: 628px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 0;
+    /* flex-wrap: wrap; */
+    /* height: 37px; */
+  }
+
+  .diary_breakfast {
+    display: flex;
+  }
+
+  .diary_breakfast_item {
+    display: block;
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 0px;
+  }
+
+  .diary_breakfast_item:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .buttons {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .diary_breakfast_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .diary_breakfast_item:not(:last-child) {
+    margin-right: 11px;
+  }
+
+  .diary_breakfast_item[id='name'] {
+    width: 245px;
+  }
+
+  .diary_breakfast_item[id='carbonohidrates'] {
+    width: 78px;
+  }
+
+  .diary_breakfast_item[id='protein'] {
+    width: 78px;
+  }
+
+  .diary_breakfast_item[id='fat'] {
+    width: 78px;
+    font-size: 14px;
+  }
+
+  .diary_breakfast_item[id='calories'] {
+    width: 82px;
+    font-size: 14px;
+  }
+
+  .buttons_wrapper {
+    margin-right: 0 auto;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .modal {
+    width: 676px;
+    height: 408px;
+    padding: 24px;
+  }
+
+  .formMeal {
+    display: flex;
+    width: 628px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    /* flex-wrap: wrap; */
+  }
+
+  .diary_breakfast_item {
+    display: block;
+    /* width: 100%; */
+    padding: 8px 10px;
+  }
+
+  .diary_breakfast_list {
+    display: flex;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .diary_add_meal_wrapper {
+    margin-bottom: 136px;
+  }
+  .buttons_wrapper {
+    /* display: flex; */
+    margin-right: 0 auto;
+    align-items: center;
+  }
+}

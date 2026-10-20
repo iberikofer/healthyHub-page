@@ -1,0 +1,326 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form input {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.title {
+  font-size: 24px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.link {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  width: 149px;
+  color: var(--primary-white-color);
+}
+
+.download {
+  fill: var(--primary-green-lite-color);
+  margin-right: 6px;
+  width: 16px;
+  height: 16px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.input {
+  width: 300px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 40px;
+  border: 1px solid var(--primary-grey-color);
+  border-radius: 12px;
+  background-color: var(--primary-black-second-color);
+  font-size: 14px;
+  color: var(--primary-white-color);
+}
+
+.photo {
+  display: flex;
+  margin-bottom: 40px;
+  width: 219px;
+}
+
+.avatarImg {
+  height: 36px;
+  width: 36px;
+  margin-right: 12px;
+  border-radius: 50%;
+}
+
+.photoButton {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: transparent;
+  border: none;
+  width: 172px;
+  height: 20px;
+}
+
+.downloadBlock {
+  display: flex;
+}
+
+.genderDiv {
+  margin-bottom: 40px;
+}
+
+.inputGender {
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+.inputGender:checked,
+.inputGender:not(checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
+}
+
+.customCheked {
+  display: inline-block;
+  margin-right: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-grey-color);
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.inputGender:checked + .customCheked {
+  border: 0;
+  background-color: var(--primary-green-lite-color);
+  background: url(../../assets/userRadioCheked.svg);
+}
+
+.labelGender {
+  margin-right: 16px;
+  font-size: 14px;
+}
+
+.photoInput {
+  display: none;
+}
+
+.activity {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.labelActivity {
+  margin-bottom: 24px;
+}
+
+.inputRadioActive:checked,
+.inputRadioActive:not(checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.inputRadioActive:checked + .customCheked {
+  border: 0;
+  background-color: var(--primary-green-lite-color);
+  background: url(../../assets/userRadioCheked.svg);
+}
+
+.btnActive {
+  width: 300px;
+  height: 36px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: var(--primary-green-lite-color);
+  color: var(--primary-black-second-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.btn {
+  width: 300px;
+  height: 36px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: transparent;
+  color: var(--primary-grey-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 833px) {
+  .buttonsTablet {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 834px) {
+  .conteiner {
+    width: 100%;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 20px;
+  }
+  .buttons {
+    display: none;
+  }
+  .buttonsTablet {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+  }
+  .btnActive {
+    width: 212px;
+    height: 36px;
+    margin-top: 0;
+  }
+  .btn {
+    width: 212px;
+    height: 36px;
+    margin-right: 12px;
+  }
+
+  .mainImage {
+    display: block;
+    min-height: 374px;
+    min-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .title {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 491px;
+    column-gap: 60px;
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .label {
+    display: block;
+    width: 212px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .input {
+    width: 212px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 40px;
+    color: var(--primary-white-color);
+    border: 1px solid var(--primary-grey-color);
+    border-radius: 12px;
+    background-color: var(--primary-black-second-color);
+  }
+
+  .input:hover {
+    border: 1px solid var(--primary-lite-green-color);
+  }
+
+  .activity {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 491px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .conteiner {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .btnActive {
+    width: 212px;
+    height: 36px;
+  }
+
+  .btn {
+    width: 212px;
+    height: 36px;
+    margin-right: 12px;
+  }
+
+  .mainImage {
+    display: block;
+    min-height: 528px;
+    min-width: 536px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form {
+    margin-top: 0px;
+  }
+
+  .desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 1187px;
+    column-gap: 160px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
