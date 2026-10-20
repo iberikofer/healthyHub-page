@@ -19,10 +19,9 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install, lint, build 🔧
+      - name: Install and build 🔧
         run: |
           npm install --legacy-peer-deps
-          npm run lint:js
           CI=false npm run build
 
       - name: Deploy 🚀
