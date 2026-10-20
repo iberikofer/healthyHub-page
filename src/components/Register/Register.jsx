@@ -238,9 +238,29 @@ const Register = () => {
             <button
               type="submit"
               className={css.btn}
-              onSubmit={formSubmitHandler}
             >
               Sign Up
+            </button>
+            <button
+              type="button"
+              className={css.btn}
+              style={{
+                marginTop: '12px',
+                backgroundColor: 'transparent',
+                border: '1px solid #E3FFA8',
+                color: '#E3FFA8',
+              }}
+              onClick={async () => {
+                dispatch(setLoadingTrue());
+                const response = await dispatch(
+                  authOperations.logIn({ email: 'demo@example.com', password: 'Password123' })
+                );
+                if (response?.payload) {
+                  navigate('/main');
+                }
+              }}
+            >
+              Try Demo Account
             </button>
           </form>
         </div>
