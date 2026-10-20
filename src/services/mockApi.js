@@ -88,29 +88,44 @@ const getInitialMockData = () => {
   const generateMonthData = () => {
     const list = [];
     const date = new Date();
-    const days = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const days = new Date(year, date.getMonth() + 1, 0).getDate();
     for (let i = 1; i <= days; i++) {
+      const dayStr = String(i).padStart(2, '0');
+      const isPastOrToday = i <= date.getDate();
       list.push({
-        date: i,
-        calories: i <= date.getDate() ? 1400 + Math.floor(Math.random() * 400) : 0,
-        water: i <= date.getDate() ? 1200 + Math.floor(Math.random() * 800) : 0,
-        weight: i <= date.getDate() ? 75 : 0,
+        date: `${year}-${month}-${dayStr}`,
+        water: isPastOrToday ? 1200 + Math.floor(Math.random() * 800) : 0,
+        weight: isPastOrToday ? 75 : 0,
+        breakfast: isPastOrToday ? [{ calories: 350 + Math.floor(Math.random() * 80) }] : [],
+        lunch: isPastOrToday ? [{ calories: 520 + Math.floor(Math.random() * 100) }] : [],
+        dinner: isPastOrToday ? [{ calories: 430 + Math.floor(Math.random() * 90) }] : [],
+        snack: isPastOrToday ? [{ calories: 150 + Math.floor(Math.random() * 50) }] : [],
       });
     }
     return list;
   };
 
   const generateYearData = () => {
-    const months = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-    return months.map((m, idx) => ({
-      month: m,
-      calories: idx <= new Date().getMonth() ? 1500 + Math.floor(Math.random() * 300) : 0,
-      water: idx <= new Date().getMonth() ? 1600 + Math.floor(Math.random() * 400) : 0,
-      weight: idx <= new Date().getMonth() ? 74 + (idx % 2) : 0,
-    }));
+    const list = [];
+    const date = new Date();
+    const year = date.getFullYear();
+    const currentMonth = date.getMonth() + 1;
+    for (let m = 1; m <= 12; m++) {
+      const monthStr = String(m).padStart(2, '0');
+      const isPastOrCurrent = m <= currentMonth;
+      list.push({
+        date: `${year}-${monthStr}-15`,
+        water: isPastOrCurrent ? 1500 + Math.floor(Math.random() * 500) : 0,
+        weight: isPastOrCurrent ? 74 + (m % 2) : 0,
+        breakfast: isPastOrCurrent ? [{ calories: 350 }] : [],
+        lunch: isPastOrCurrent ? [{ calories: 550 }] : [],
+        dinner: isPastOrCurrent ? [{ calories: 450 }] : [],
+        snack: isPastOrCurrent ? [{ calories: 150 }] : [],
+      });
+    }
+    return list;
   };
 
   return {
@@ -181,10 +196,30 @@ export const initMockApi = () => {
         } catch (_) {}
 
         store.user = {
-          ...store.user,
-          ...body,
+          name: body.name || 'Demo User',
+          email: body.email || 'demo.new@example.com',
+          goal: body.goal || 'Lose Fat',
+          gender: body.gender || 'Male',
+          age: String(body.age || '25'),
+          height: String(body.height || '175'),
+          weight: String(body.weight || '70'),
+          activity: String(body.activity || '1.2'),
           token: 'mock-jwt-token-' + Date.now(),
+          avatarURL: '',
         };
+
+        // Clean day for newly registered demo user
+        store.day = {
+          date: new Date().toISOString().split('T')[0],
+          water: 0,
+          weight: Number(body.weight) || 70,
+          breakfast: [],
+          lunch: [],
+          dinner: [],
+          snack: [],
+        };
+        store.month = [];
+        store.year = [];
         saveMockData(store);
         return Promise.resolve({
           status: 201,
@@ -194,6 +229,21 @@ export const initMockApi = () => {
 
       // 3. Login
       if (url.includes('/user/login')) {
+        let body = {};
+        try {
+          body = typeof error.config.data === 'string' ? JSON.parse(error.config.data) : (error.config.data || {});
+        } catch (_) {}
+
+        // If logging in as existing demo user, restore populated mock stats
+        if (body.email === 'demo@example.com') {
+          const freshDemo = getInitialMockData();
+          store.user = freshDemo.user;
+          store.day = freshDemo.day;
+          store.month = freshDemo.month;
+          store.year = freshDemo.year;
+          saveMockData(store);
+        }
+
         return Promise.resolve({
           status: 200,
           data: store.user,

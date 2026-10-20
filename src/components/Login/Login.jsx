@@ -142,18 +142,13 @@ const Login = () => {
               <button
                 type="submit"
                 className={css.btn}
+                style={{ marginBottom: '0px' }}
               >
                 Sign In
               </button>
               <button
                 type="button"
-                className={css.btn}
-                style={{
-                  marginTop: '12px',
-                  backgroundColor: 'transparent',
-                  border: '1px solid #E3FFA8',
-                  color: '#E3FFA8',
-                }}
+                className={css.demoBtn}
                 onClick={async () => {
                   dispatch(setLoadingTrue());
                   const response = await dispatch(
@@ -164,8 +159,11 @@ const Login = () => {
                   }
                 }}
               >
-                Try Demo Account
+                Try Existing Demo Account
               </button>
+              <p className={css.demoHint}>
+                Instant access to an active profile with pre-filled meals, water intake, and dashboard analytics.
+              </p>
             </form>
             <p
               className={css.forgot}

@@ -138,6 +138,27 @@ const Register = () => {
     }
   };
 
+  const handleNewDemoAccount = () => {
+    const demoName = 'Demo User';
+    const demoEmail = 'demo.new@example.com';
+    const demoPassword = 'Password123';
+
+    setName2(demoName);
+    setEmail2(demoEmail);
+    setPassword2(demoPassword);
+    setIsValidEmail(true);
+    setIsValidPassword(true);
+
+    dispatch(
+      setRegData({
+        name: demoName,
+        email: demoEmail,
+        password: demoPassword,
+      })
+    );
+    navigate('/usergoal');
+  };
+
   return (
     <div className={css.register}>
       <img src={wellcomeImage} alt="wellcomeImage" className={css.image} />
@@ -238,30 +259,20 @@ const Register = () => {
             <button
               type="submit"
               className={css.btn}
+              style={{ marginBottom: '0px' }}
             >
               Sign Up
             </button>
             <button
               type="button"
-              className={css.btn}
-              style={{
-                marginTop: '12px',
-                backgroundColor: 'transparent',
-                border: '1px solid #E3FFA8',
-                color: '#E3FFA8',
-              }}
-              onClick={async () => {
-                dispatch(setLoadingTrue());
-                const response = await dispatch(
-                  authOperations.logIn({ email: 'demo@example.com', password: 'Password123' })
-                );
-                if (response?.payload) {
-                  navigate('/main');
-                }
-              }}
+              className={css.demoBtn}
+              onClick={handleNewDemoAccount}
             >
-              Try Demo Account
+              Try New Demo Account
             </button>
+            <p className={css.demoHint}>
+              Walk through the onboarding flow (goal, body parameters, activity) and test a fresh, empty profile.
+            </p>
           </form>
         </div>
         <div className={css.footerText}>

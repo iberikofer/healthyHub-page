@@ -90,6 +90,35 @@
   margin-bottom: 80px;
 }
 
+.demoBtn {
+  width: 300px;
+  height: 36px;
+  background-color: transparent;
+  border: 1px solid var(--primary-green-lite-color);
+  color: var(--primary-green-lite-color);
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.demoBtn:hover {
+  background-color: rgba(227, 255, 168, 0.1);
+}
+
+.demoHint {
+  color: var(--primary-grey-color);
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  width: 300px;
+  margin-bottom: 40px;
+}
+
 .text {
   color: var(--primary-grey-color);
   font-weight: 400;
@@ -149,6 +178,15 @@
     margin-bottom: 238px;
   }
 
+  .demoBtn {
+    width: 380px;
+  }
+
+  .demoHint {
+    width: 380px;
+    margin-bottom: 80px;
+  }
+
   .footerText {
     display: flex;
     align-items: center;
@@ -191,6 +229,15 @@
   .btn {
     width: 212px;
     margin-bottom: 200px;
+  }
+
+  .demoBtn {
+    width: 212px;
+  }
+
+  .demoHint {
+    width: 212px;
+    margin-bottom: 80px;
   }
 
   .footerText {
