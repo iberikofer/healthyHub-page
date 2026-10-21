@@ -1,9 +1,9 @@
 {
-  "name": "healthyhub-frontend",
+  "name": "healthyhub-page",
   "main": "dist/index.js",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://iberikofer.github.io/healthyHub-frontend/",
+  "homepage": "https://iberikofer.github.io/healthyHub-page/",
   "dependencies": {
     "@redux-devtools/extension": "^3.2.5",
     "@reduxjs/toolkit": "^1.9.5",
