@@ -51,18 +51,21 @@ function LogoutModal({ closeModal }) {
         contentClassName={css.modal_action_content}
       >
         <Modal.Body className={css.modal}>
-          <button onClick={handleModalClose} className={css.close_button}>
-            <img src={close} alt="close" width={30} height={30} />
-            <p className={css.close_text}>Cancel</p>
-          </button>
-          <NavLink
-            className={`${css.user_link} ${css.logout_link}`}
-            to="/"
-            onClick={actiocClick}
-          >
-            <img src={logout} alt="logout" width={30} height={30} />
-            <p className={css.link}>Log out</p>
-          </NavLink>
+          <p className={css.modal_question}>Are you sure you want to log out?</p>
+          <div className={css.modal_actions}>
+            <NavLink
+              className={`${css.user_link} ${css.logout_link}`}
+              to="/"
+              onClick={actiocClick}
+            >
+              <img src={logout} alt="logout" width={22} height={22} />
+              <p className={css.link}>Log out</p>
+            </NavLink>
+            <button onClick={handleModalClose} className={css.close_button}>
+              <img src={close} alt="close" width={22} height={22} />
+              <p className={css.close_text}>Cancel</p>
+            </button>
+          </div>
         </Modal.Body>
       </Modal>
     </div>

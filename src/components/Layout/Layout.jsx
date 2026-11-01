@@ -18,7 +18,6 @@ const Layout = () => {
         <Container>
           <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
-            <p style={{ color: '#080707', marginTop: 30 }}>Group#4</p>
           </Suspense>
         </Container>
       </main>

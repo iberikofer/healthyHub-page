@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import authOperations from 'redux/auth/auth-operations';
 import authSelectors from '../../redux/auth/auth-selectors';
+import profile from '../../assets/profile-circle.svg';
 import illustration from '../../assets/SettingsIllustration.svg';
 import download from '../../assets/direct-inbox.svg';
 import css from './Settings.module.css';
@@ -115,7 +116,15 @@ const Settings = () => {
                 {avatar ? (
                   <img className={css.avatarImg} src={avatar} alt="avatar" />
                 ) : (
-                  <img className={css.avatarImg} src={avatarURL} alt="avatar" />
+                  <img
+                    className={css.avatarImg}
+                    src={avatarURL || profile}
+                    alt="avatar"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = profile;
+                    }}
+                  />
                 )}
                 <div className={css.photoButton}>
                   <label className={css.downloadBlock}>

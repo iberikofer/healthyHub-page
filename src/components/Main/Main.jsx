@@ -9,6 +9,7 @@ import breakfastIcon from 'assets/breakfast.svg';
 import lunchIcon from 'assets/lunch.svg';
 import dinnerIcon from 'assets/dinner.svg';
 import snackIcon from 'assets/snack.svg';
+import fruit1 from 'assets/fruit1.png';
 import ModalAddMeal from './ModalAddMeal';
 import ModalAddWater from './ModalAddWater';
 import { NavLink } from 'react-router-dom';
@@ -782,7 +783,15 @@ const Home = () => {
           <ul className={css.recommendedFoodUl}>
             {randomProducts.map(product => (
               <li className={css.greyBlock2} key={product.name}>
-                <img src={product.img} alt="fruit" style={{ weight: 46 }} />
+                <img
+                  src={product.img || fruit1}
+                  alt="fruit"
+                  style={{ width: 46, height: 46, objectFit: 'contain' }}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = fruit1;
+                  }}
+                />
                 <div
                   style={{
                     display: 'flex',

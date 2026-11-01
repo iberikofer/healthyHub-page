@@ -5,14 +5,14 @@ import { useSelector } from 'react-redux';
 import authSelectors from 'redux/auth/auth-selectors';
 
 const WeightMonthChart = props => {
-  const userMonthData = [...props.userMonthData];
-  const currentWeight = useSelector(authSelectors.getWeight);
+  const userMonthData = [...(props.userMonthData || [])];
+  const currentWeight = useSelector(authSelectors.getWeight) || 75;
 
-  const firstDay = Number(userMonthData[0].date);
+  const firstDay = userMonthData.length > 0 ? Number(userMonthData[0]?.date || 1) : 1;
 
   const fullMonth = [];
 
-  let previousDayWeight = userMonthData[0].weight;
+  let previousDayWeight = userMonthData.length > 0 && userMonthData[0]?.weight ? userMonthData[0].weight : currentWeight;
   const today = Number(dayjs(new Date()).format('DD'));
 
   // Pushing empty weight if there is no record

@@ -22,9 +22,9 @@ ChartJS.register(
 );
 
 const CaloriesMonthChart = props => {
-  const userMonthData = [...props.userMonthData];
+  const userMonthData = [...(props.userMonthData || [])];
 
-  const firstDay = Number(userMonthData[0].date);
+  const firstDay = userMonthData.length > 0 ? Number(userMonthData[0]?.date || 1) : 1;
 
   const fullMonth = [];
 
@@ -35,16 +35,16 @@ const CaloriesMonthChart = props => {
 
   // pushing records
   for (let i = 0; i < userMonthData.length; i++) {
-    fullMonth.push(userMonthData[i].calories.toString());
+    fullMonth.push(userMonthData[i]?.calories ? userMonthData[i].calories.toString() : '0');
   }
 
   // Adding element to the array's beggining for the nicer chart performance
-  fullMonth.unshift(fullMonth[0]);
+  fullMonth.unshift(fullMonth[0] || 0);
 
   // calculate Average
   let sum = 0;
   userMonthData.forEach(element => {
-    sum += Number(element.calories);
+    sum += Number(element?.calories || 0);
   });
   const average = Math.floor(sum / Math.max(userMonthData.length, 1));
 

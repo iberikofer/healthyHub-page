@@ -1,7 +1,9 @@
+import React, { useState } from 'react';
 import css from './ButtonDropDown.module.css';
 import arrowDown from '../../../assets/arrow_down.svg';
 import edit from '../../../assets/edit.svg';
 import arrowRight from '../../../assets/arrow_right.svg';
+import profile from '../../../assets/profile-circle.svg';
 import useMediaQuery from 'helpers/useMediaQuery';
 
 function ButtonDropDown({
@@ -15,12 +17,21 @@ function ButtonDropDown({
   showGoal,
 }) {
   const isMobile = useMediaQuery('(max-width:833px)');
+  const [imageError, setImageError] = useState(false);
+
+  const isDemoOrNoImage = !image || image === '' || imageError;
+
   return (
     <div className={css.button}>
       {userAction ? (
         <>
           <p className={css.user}>{text}</p>
-          <img className={css.avatar} src={image} alt="avatar" />
+          <img
+            className={css.avatar}
+            src={isDemoOrNoImage ? profile : image}
+            alt="avatar"
+            onError={() => setImageError(true)}
+          />
           <img
             src={arrowDown}
             alt="arrowDown"

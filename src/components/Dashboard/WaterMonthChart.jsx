@@ -4,9 +4,9 @@ import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unus
 import css from './Dashboard.module.css';
 
 const WaterMonthChart = props => {
-  const userMonthData = [...props.userMonthData];
+  const userMonthData = [...(props.userMonthData || [])];
 
-  const firstDay = Number(userMonthData[0].date);
+  const firstDay = userMonthData.length > 0 ? Number(userMonthData[0]?.date || 1) : 1;
 
   const fullMonth = [];
 
@@ -17,15 +17,15 @@ const WaterMonthChart = props => {
 
   // pushing records
   for (let i = 0; i < userMonthData.length; i++) {
-    fullMonth.push(Number(userMonthData[i].water));
+    fullMonth.push(Number(userMonthData[i]?.water || 0));
   }
 
   // Adding element to the array's beggining for the nicer chart performance
-  fullMonth.unshift(fullMonth[0]);
+  fullMonth.unshift(fullMonth[0] || 0);
 
   let sum = 0;
   userMonthData.forEach(element => {
-    sum += Number(element.water);
+    sum += Number(element?.water || 0);
   });
   const average = Math.floor(sum / Math.max(userMonthData.length, 1));
 

@@ -1,15 +1,16 @@
 .wellcome {
-    padding-top: 24px;
+    padding-top: 20px;
 }
 
 .image {
-    width: 300px;
+    width: 280px;
+    height: auto;
     margin-bottom: 0;
     display: block;
 }
 
 .info {
-    margin-top: 24px;
+    margin-top: 20px;
 }
 
 .title {
@@ -19,45 +20,262 @@
 }
 
 .subTitle {
-    margin-top: 16px;
+    margin-top: 12px;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 22px;
     color: var(--primary-grey-color);
 }
 
 .buttons {
-    margin-top: 24px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Disabled Main Sign in / Sign up Buttons with Tooltip */
+.disabledBtnWrapper {
+    position: relative;
+    display: inline-block;
+    cursor: not-allowed;
+}
+
+.btnDisabled {
+    opacity: 0.42;
+    cursor: not-allowed !important;
+    pointer-events: none;
+}
+
+.disabledTooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    white-space: nowrap;
+    background-color: #0f0f0f;
+    border: 1px solid rgba(227, 255, 168, 0.4);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+    z-index: 100;
+}
+
+.disabledTooltip::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    margin-left: -4px;
+    width: 8px;
+    height: 8px;
+    background-color: #0f0f0f;
+    border-right: 1px solid rgba(227, 255, 168, 0.4);
+    border-bottom: 1px solid rgba(227, 255, 168, 0.4);
+    transform: rotate(45deg);
+    z-index: 1;
+}
+
+.disabledBtnWrapper:hover .disabledTooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }
 
 .btnActive {
-    height: 36px;
+    height: 38px;
     width: 142px;
     padding: 8px 10px;
     border-radius: 10px;
     border: none;
-    margin-right: 16px;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
     color: var(--primary-black-second-color);
     background-color: var(--primary-green-lite-color);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn {
-    height: 20px;
+    height: 38px;
     width: 122px;
-    padding: 0;
-    border: none;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
     color: var(--primary-white-color);
     background-color: transparent;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Offline Demo Announcement (Bordered card, justified description text) */
+.demoSection {
+    margin-top: 20px;
+    background: rgba(227, 255, 168, 0.02);
+    border: 1px solid rgba(227, 255, 168, 0.25);
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    width: 100%;
+}
+
+.demoTitle {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    color: var(--primary-green-lite-color);
+    text-align: center;
+    margin: 0 0 10px 0;
+    letter-spacing: 0.3px;
+    text-shadow: 0 0 16px rgba(227, 255, 168, 0.2);
+}
+
+.demoNoticeText {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 20px;
+    color: #b6b6b6;
+    font-weight: 400;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+.demoNoticeText strong {
+    color: #ffffff;
+}
+
+.demoButtons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.demoBtnWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.demoLoginBtn {
+    height: 38px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--primary-black-second-color);
+    background-color: var(--primary-green-lite-color);
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(227, 255, 168, 0.25);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.demoLoginBtn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 4px 16px rgba(227, 255, 168, 0.45);
+    transform: translateY(-1px);
+}
+
+.demoLoginBtn:active {
+    transform: scale(0.97);
+}
+
+.demoRegisterBtn {
+    height: 38px;
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(227, 255, 168, 0.4);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--primary-green-lite-color);
+    background-color: rgba(227, 255, 168, 0.08);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.demoRegisterBtn:hover {
+    background-color: rgba(227, 255, 168, 0.18);
+    border-color: var(--primary-green-lite-color);
+    transform: translateY(-1px);
+}
+
+.demoRegisterBtn:active {
+    transform: scale(0.97);
+}
+
+/* Tooltip Popup on Hover for Demo buttons */
+.demoTooltip {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    width: 270px;
+    background-color: #0f0f0f;
+    border: 1px solid rgba(227, 255, 168, 0.4);
+    border-radius: 12px;
+    padding: 12px 14px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.8), 0 0 12px rgba(227, 255, 168, 0.15);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+    z-index: 100;
+    text-align: left;
+}
+
+.demoTooltip::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    margin-left: -5px;
+    width: 10px;
+    height: 10px;
+    background-color: #0f0f0f;
+    border-right: 1px solid rgba(227, 255, 168, 0.4);
+    border-bottom: 1px solid rgba(227, 255, 168, 0.4);
+    transform: rotate(45deg);
+    z-index: 1;
+}
+
+.demoBtnWrapper:hover .demoTooltip,
+.demoBtnWrapper:focus-within .demoTooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tooltipTitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-green-lite-color);
+    margin: 0 0 4px 0;
+}
+
+.tooltipDesc {
+    font-size: 12px;
+    line-height: 17px;
+    color: #b6b6b6;
+    margin: 0;
 }
 
 .benefits {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .benefitsList {
@@ -66,7 +284,7 @@
 }
 
 .benefitsItem {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .benefitsName {
@@ -78,19 +296,19 @@
 
 @media (min-width: 834px) {
     .wellcome {
-        padding-top: 40px;
+        padding-top: 20px;
     }
     .image {
-        width: 380px;
+        width: 300px;
         margin-left: auto;
         margin-right: auto;
-        display: flex;
+        display: block;
     }
     .info {
-        width: 444px;
+        width: 480px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 80px;
+        margin-top: 24px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -99,15 +317,27 @@
     .title {
         font-size: 30px;
         line-height: 36px;
+        text-align: center;
     }
     .subTitle {
-        width: 400px;
-        font-size: 22px;
-        line-height: 32px;
+        width: 440px;
+        font-size: 20px;
+        line-height: 28px;
         text-align: center;
     }
     .btnActive {
-        width: 212px;
+        width: 170px;
+    }
+    .btn {
+        width: 130px;
+    }
+    .demoSection {
+        width: 100%;
+        max-width: 480px;
+    }
+    .demoTitle {
+        font-size: 26px;
+        line-height: 34px;
     }
     .benefitsList {
         display: flex;
@@ -115,8 +345,8 @@
         justify-content: space-between;
     }
     .benefits {
-        margin-top: 80px;
-        width: 436px;
+        margin-top: 20px;
+        width: 480px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -126,28 +356,48 @@
 @media (min-width: 1440px) {
     .wellcome {
         display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 10px;
+        min-height: calc(100vh - 80px);
     }
     .image {
-        margin-left: 116px;
-        margin-right: 104px;
-        width: 592px;
-        height: 588px;
+        margin-left: auto;
+        margin-right: 48px;
+        width: min(480px, 36vw);
+        max-height: calc(100vh - 100px);
+        height: auto;
+        object-fit: contain;
     }
     .info {
-        margin-top: 80px;
+        margin-top: 0;
         margin-left: 0;
+        margin-right: auto;
+        width: 480px;
         justify-content: flex-start;
         align-items: flex-start;
     }
+    .title {
+        text-align: start;
+    }
     .subTitle {
         text-align: start;
+    }
+    .demoTitle {
+        font-size: 26px;
+        line-height: 34px;
+        text-align: center;
     }
     .benefitsList {
         flex-direction: column;
     }
     .benefits {
+        margin-top: 18px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+    }
+    .benefitsItem {
+        margin-bottom: 6px;
     }
 }

@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import illustration from '../../assets/RecommendedFood.svg';
 import arrow_rigth from '../../assets/arrow-back.svg';
+import fruit1 from '../../assets/fruit1.png';
+import fruit2 from '../../assets/fruit2.png';
+import fruit3 from '../../assets/fruit3.png';
+import fruit4 from '../../assets/fruit4.png';
 import { NavLink } from 'react-router-dom';
 import css from './RecommendedFood.module.css';
 
-export const products = [
+const localFruitImages = [fruit1, fruit2, fruit3, fruit4];
+
+const rawProducts = [
   {
     "name": "Apples",
     "amount": "100 g",
@@ -326,6 +332,11 @@ export const products = [
   }
 ]
 
+export const products = rawProducts.map((item, idx) => ({
+  ...item,
+  img: localFruitImages[idx % localFruitImages.length],
+}));
+
 const getRandomProducts = (data, count) => {
   const randomData = [...data];
   for (let i = randomData.length - 1; i > 0; i--) {
@@ -365,10 +376,14 @@ const RecommendedFood = () => {
           {randomProducts.map(product => (
             <li className={css.thumb} key={product.name}>
               <img
-                src={product.img}
+                src={product.img || fruit1}
                 alt="product"
                 className={css.icon}
                 width={46}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = fruit1;
+                }}
               />
               <div>
                 <li className={css.name}> {product.name}</li>

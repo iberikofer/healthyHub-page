@@ -1,10 +1,10 @@
 import profile from '../../../assets/profile-circle.svg';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import css from './Navigation.module.css';
-import { useLocation } from 'react-router-dom';
 
 function Navigation() {
   const { pathname } = useLocation();
+  const isWelcomePage = pathname === '/' || pathname === '/healthyHub-page';
 
   const handleActiveStyle = ({ isActive }) => {
     return {
@@ -25,18 +25,38 @@ function Navigation() {
   };
 
   return (
-    <div className={css.auth}>
+    <div className={`${css.auth} ${isWelcomePage ? css.disabledAuth : ''}`}>
       <div className={css.sign}>
-        <NavLink style={handleisActiveStyle} className={css.link} to="/signin">
+        <NavLink
+          style={handleisActiveStyle}
+          className={`${css.link} ${isWelcomePage ? css.disabledLink : ''}`}
+          to="/signin"
+          onClick={isWelcomePage ? (e) => e.preventDefault() : undefined}
+          tabIndex={isWelcomePage ? -1 : undefined}
+          aria-disabled={isWelcomePage}
+        >
           Sign in
         </NavLink>
         <p className={css.link}> / </p>
-        <NavLink style={handleActiveStyle} className={css.link} to="/signup">
+        <NavLink
+          style={handleActiveStyle}
+          className={`${css.link} ${isWelcomePage ? css.disabledLink : ''}`}
+          to="/signup"
+          onClick={isWelcomePage ? (e) => e.preventDefault() : undefined}
+          tabIndex={isWelcomePage ? -1 : undefined}
+          aria-disabled={isWelcomePage}
+        >
           Sign up
         </NavLink>
       </div>
 
-      <img className={css.profile} src={profile} alt="profile"></img>
+      <img className={css.profile} src={profile} alt="profile" />
+
+      {isWelcomePage && (
+        <div className={css.navTooltip} role="tooltip">
+          Please check the information below
+        </div>
+      )}
     </div>
   );
 }
